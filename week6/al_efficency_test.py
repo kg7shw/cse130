@@ -1,0 +1,2 @@
+list = []
+n = len(list)

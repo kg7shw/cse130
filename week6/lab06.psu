@@ -1,0 +1,25 @@
+PROMPT for filename
+GET filename
+
+OPEN file
+names_text = READ file
+names_json = json.loads(names_text)
+names_list = names_json["array"]
+
+PROMPT for element
+GET element
+
+i_min = 0
+i_max = length names_list
+
+WHILE i_min <= i_max AND NOT found
+
+    i_mid = (i_mid + i_max) / 2
+
+    IF names_list[i_mid] < element
+        i_min = i_mid + 1
+    ELSE IF names_list[i_mid] > element
+        i_max = i_mid - 1
+    ELSE
+        found =  TRUE
+PUT found

@@ -1,0 +1,16 @@
+float computeTax (float tax rate)
+
+    done <- false
+
+    while not done
+        PROMPT for hourlyWage
+        PROMPT for hoursWorked
+
+        IF hourlyWage < 0 or hoursWorked < 0
+        PUT error message on the screen
+        ELSE
+        done <- false
+    SET pay <- half pay for hours over fourty plus regular pay
+
+    RETURN pay
+END

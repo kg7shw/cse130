@@ -1,0 +1,32 @@
+GET word_list_file
+
+READ word_list_file
+word_list = parse_json(word_list_file)
+
+GET search_word
+
+min = 0
+max = word_list.length - 1
+
+WHILE searching
+    mid = floor((min + max) / 2)
+    mid_value = word_list[mid]
+    IF mid_value == word_search
+        word_exists = true
+        searching = false
+
+    ELSE IF mid_value > search_word
+    max = mid - 1
+
+    ELSE
+        min = mid + 1
+
+    IF min > max
+        word_exists = false
+        searching = false
+
+PUT word_exists
+
+
+
+
