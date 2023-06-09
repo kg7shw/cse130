@@ -1,0 +1,188 @@
+Prompt the user for a file containing a collection of words.
+Read the file in JSON format.
+Perform a sort on the list of words.
+Display the contents of the list on the screen.
+
+PROMPT for filename
+GET filename
+
+OPEN file
+names_text = READ file
+names_json = json.loads(names_text)
+names_list = names_json["array"]
+
+PROMPT for element
+GET element
+
+i_min = 0
+i_max = length names_list
+
+WHILE i_min <= i_max AND NOT found
+
+    i_mid = (i_mid + i_max) / 2
+
+    IF names_list[i_mid] < element
+        i_min = i_mid + 1
+    ELSE IF names_list[i_mid] > element
+        i_max = i_mid - 1
+    ELSE
+        found =  TRUE
+PUT found
+
+PROMPT for filename
+GET filename
+
+OPEN file
+names_text = READ file
+
+
+
+
+
+PROMPT for filename
+GET filename
+
+OPEN file
+data = READ file
+data_json = json.loads(data)
+data_list = data_json["array"]
+
+variables:
+
+    i_pivot
+    i_check
+    i_largest
+
+for index in range(length(data_list))
+    i_largest = index
+    for element in range(index -1, length(data))
+        IF data_list
+
+
+PROMPT for filename
+GET filename
+
+OPEN file
+data = READ file
+data_json = json.loads(data)
+data_list = data_json["array"]
+
+variables:
+
+    i_pivot
+    i_check
+    i_largest
+
+for index in range(length(data_list))
+    i_largest = index
+    for element in range(index -1, length(data))
+        IF data_list
+
+
+
+OPEN file
+names_text = READ file
+names_json = json.loads(names_text)
+names_list = names_json["array"]
+
+size = LENGTH(names_list)
+
+FOR i_sorted FROM 0 TO size - 2
+    i_min = i_sorted
+
+    FOR i_check FROM i_sorted + 1 TO size - 1
+        IF names_list[i_check] < names_list[i_min]
+            i_min = i_check
+        END IF
+    END FOR
+
+    IF i_min != i_sorted
+        SWAP names_list[i_min] WITH names_list[i_sorted]
+    END IF
+END FOR
+
+PRINT "Sorted array:", names_list
+
+
+
+
+
+OPEN file
+names_text = READ file
+names_json = json.loads(names_text)
+names_list = names_json["array"]
+
+size = LENGTH(names_list)
+i_sorted = 0
+
+WHILE i_sorted < size - 1
+    i_min = i_sorted
+
+    FOR i_check FROM i_sorted + 1 TO size - 1
+        IF names_list[i_check] < names_list[i_min]
+            i_min = i_check
+        END IF
+    END FOR
+
+    IF i_min != i_sorted
+        SWAP names_list[i_min] WITH names_list[i_sorted]
+    END IF
+
+    i_sorted = i_sorted + 1
+END WHILE
+
+PRINT "Sorted array:", names_list
+
+
+
+
+file_content = READ file
+parsed_json = json.loads(file_content)
+name_array = parsed_json["array"]
+
+size = LENGTH(name_array)
+
+FOR i_sorted FROM 0 TO size - 2
+    i_min = i_sorted
+
+    FOR i_check FROM i_sorted + 1 TO size - 1
+        IF name_array[i_check] < name_array[i_min]
+            i_min = i_check
+        END IF
+    END FOR
+
+    IF i_min != i_sorted
+        SWAP name_array[i_min] WITH name_array[i_sorted]
+    END IF
+END FOR
+
+PRINT "Sorted array:", name_array
+
+
+
+
+PROMPT for filename
+GET filename
+
+OPEN file
+data = READ file
+data_json = json.loads(data)
+data_list = data_json["array"]
+
+size = LENGTH(data_list)
+
+FOR i_sorted FROM 0 TO size - 2
+    i_min = i_sorted
+
+    FOR i_check FROM i_sorted + 1 TO size - 1
+        IF data_list[i_check] < data_list[i_min]
+            i_min = i_check
+        END IF
+    END FOR
+
+    IF i_min != i_sorted
+        SWAP data_list[i_min] WITH data_list[i_sorted]
+    END IF
+END FOR
+
+PRINT "Sorted array:", data_list

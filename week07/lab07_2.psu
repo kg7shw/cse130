@@ -1,0 +1,106 @@
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+size = LENGTH(data_list)
+
+FOR i_sorted FROM 0 TO size - 2 DO
+    i_min = i_sorted
+
+    FOR i_check FROM i_sorted + 1 TO size - 1 DO
+        IF CONVERT_TO_INTEGER(data_list[i_check]) < CONVERT_TO_INTEGER(data_list[i_min]) THEN
+            i_min = i_check
+        END IF
+    END FOR
+
+    IF i_min != i_sorted THEN
+        SWAP data_list[i_min] WITH data_list[i_sorted]
+    END IF
+END FOR
+
+PUT "Sorted array:", data_list
+
+
+
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+size = LENGTH(data_list)
+
+FOR i_sorted FROM 0 TO size - 2 DO
+    i_min = i_sorted
+
+    FOR i_check FROM i_sorted + 1 TO size - 1 DO
+        IF CONVERT_TO_INTEGER(data_list[i_check]) < CONVERT_TO_INTEGER(data_list[i_min]) THEN
+            i_min = i_check
+        END IF
+    END FOR
+
+    IF i_min != i_sorted THEN
+        swap_value = data_list[i_min]
+        data_list[i_min] = data_list[i_sorted]
+        data_list[i_sorted] = swap_value
+    END IF
+END FOR
+
+PUT "Sorted array:", data_list
+
+
+
+import json
+
+filename = input("Enter the filename: ")
+
+with open(filename, 'r') as file:
+    data = file.read()
+
+data_json = json.loads(data)
+data_list = data_json["array"]
+
+size = len(data_list)
+
+for i_sorted in range(size - 1):
+    i_min = i_sorted
+
+    for i_check in range(i_sorted + 1, size):
+        if int(data_list[i_check]) < int(data_list[i_min]):
+            i_min = i_check
+
+    if i_min != i_sorted:
+        swap_value = data_list[i_min]
+        data_list[i_min] = data_list[i_sorted]
+        data_list[i_sorted] = swap_value
+
+print("Sorted array:", data_list)
+
+
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+size = LENGTH(data_list)
+
+FOR i_sorted FROM 0 TO size - 2 DO
+    i_min = i_sorted
+
+    FOR i_check FROM i_sorted + 1 TO size - 1 DO
+        IF CONVERT_TO_INTEGER(data_list[i_check]) < CONVERT_TO_INTEGER(data_list[i_min]) THEN
+            i_min = i_check
+        
+
+
+    IF i_min != i_sorted
+        swap_value = data_list[i_min]
+        data_list[i_min] = data_list[i_sorted]
+        data_list[i_sorted] = swap_value
+    
+
+PUT "Sorted array:", data_list
+
+
+
+

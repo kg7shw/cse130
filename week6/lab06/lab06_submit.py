@@ -1,7 +1,30 @@
+# 1. Name:
+#      Grant Call
+# 2. Assignment Name:
+#      Lab 06: Advanced Search
+# 3. Assignment Description:
+#      This program is designed to facilitate searching for a specific name
+#      within the contents of a file. It prompts the user to enter a filename
+#      and proceeds to read the file's contents, storing them in a list.
+#      The user is then prompted to enter a name. Afterwards, the program
+#      determines whether the entered name exists within the list of file
+#      contents and provides the user with the corresponding result.
+# 4. Algorithmic Efficiency
+#      It is O(log n) it is that way because of the arch type it makes.
+#      You can see from the graph my program plotted and from the table
+#      My code generated for every doubling of the input size the efficency
+#      decreases exponentially. It looks like a steaper arch that plateaus.
+# 5. What was the hardest part? Be as specific as possible.
+#      the hardest part for me was both the refaxctoring to functions so that
+#      I could impliment automated testing and the calculating of the
+#      algorithmic efficiency. It was hard for me to wrap my head around.
+#      especially since I was sick and not able to make it to class this week.
+# 6. How long did it take for you to complete the assignment?
+#      15 hours
+
 import json
 import math
 import matplotlib.pyplot as plt
-from tabulate import tabulate
 
 # Global variables
 filename = ""
@@ -53,7 +76,6 @@ def load_data(file_data):
         print("There is a problem with loading the json data")
         return []
 
-
 def get_search_word():
     """
     Prompts the user to enter the word they are looking for.
@@ -62,7 +84,6 @@ def get_search_word():
     """
     search_word = input("What name are we looking for? ")
     return search_word
-
 
 def binary_search(names_list, search_word):
     """
@@ -93,7 +114,6 @@ def binary_search(names_list, search_word):
 
     return found
 
-
 def run_test_cases(filename, search_word):
     """
     Runs the test cases for binary search.
@@ -108,7 +128,6 @@ def run_test_cases(filename, search_word):
     found = binary_search(names_list, search_word)
     get_efficiency(names_list)
     return found
-
 
 def test_cases():
     """
@@ -159,7 +178,6 @@ def test_cases():
             print(f"The search word: '{search_word}' was not found in '{filename}'.")
         print("-----------------------------------")
 
-
 def get_efficiency(names_list):
     """
     Calculates and prints the efficiency plot point numbers of the binary search.
@@ -177,35 +195,103 @@ def get_efficiency(names_list):
     print(f"How many iterations it took: {c}\n")
 
 def display_table():
-    # Print the table
+    """
+    Prints the input and the counter to a table to the terminal.
+    """
     print("n | c")
     print("--+--")
     for n, c in zip(lengths, iterations):
         print(f"{n} | {c}")
 
+def display_graph():
+    """
+    Creates, displaysand plots the points on the graph.
+    It shows the data from the lengths and the iterations lists.
+    """
+    plt.plot(lengths, iterations, 'ro-')
+    plt.xlabel("Input(n)")
+    plt.ylabel("Iterations(c)")
+    plt.title("Algorithm Efficiency Graph")
+    plt.show()
+
+def create_test_lists():
+    """
+    Creates test lists based on user input.
+    
+    Returns:
+        lists (list): A list of lists containing the generated test lists.
+    """
+    num_lists = int(input("How many lists do you want? "))
+
+    lists = []
+    for i in range(num_lists):
+        length = int(input(f"Enter the length of list {i+1}: "))
+        new_list = list(range(1, length + 1))
+        lists.append(new_list)
+
+    return lists
+
+def default_test_lists():
+    """
+    Generates default test lists with set predefined lengths for the lists.
+    
+    Returns:
+        lists (list): A list of lists containing the generated default test lists.
+    """
+    test_lengths = [4, 8, 16, 32, 64, 124, 248, 496, 992, 1984]
+
+    lists = []
+    for length in test_lengths:
+        new_list = list(range(1, length + 1))
+        lists.append(new_list)
+
+    return lists
+
+def test_efficiency():
+    """
+    Performs efficiency testing on the binary search algorithm.
+
+    The function prompts the user to choose whether to create their own lists or use default test lists.
+    Then it clears any existing data in lengths and iterations lists.
+
+    For each test list, it performs a binary search for the last element of the list,
+    calculates the efficiency, and stores the results.
+
+    Lastly, It calls the display functions for the table and the graph.
+    """
+    choice = input("Do you want to create your own lists?(y/n): ").lower()
+    if choice == "y":
+        lists = create_test_lists()
+    else:
+        lists = default_test_lists()
+    lengths.clear()
+    iterations.clear()
+
+    for test_list in lists:
+        search_word = test_list[-1]
+        
+        binary_search(test_list, search_word)
+        get_efficiency(test_list)
+
+    display_table()
+    display_graph()
+
 def main():
     """
-    Runs the program.
-    Args:
-        none
-    Returns:
-        none
+    Runs the program and executes the tests for the binary search.
+
+    This function promps if they want to run the tests.
+    If they do it runs the test_cases function and the test_efficiency function
+
+    If the user chooses not to run the tests this function runs
+    it prompts for a filename, reads the file data, performs a binary search on the loaded data,
+    calculates the efficiency, and displays the search results.
+
     """
     test = input("Do you want to run the tests? (y/n): ")
     if test.lower() == 'y':
         test_cases()
-        display_table()
-
-        plt.plot(lengths, iterations, 'bo-')
-        plt.xlabel("Length of List")
-        plt.ylabel("Iterations")
-        plt.title("Algorithm Efficiency")
-        plt.show()
-
-        # table_data = zip(lengths, iterations)
-        # table_headers = ["n", "c"]
-        # table = tabulate(table_data, headers=table_headers, tablefmt="pipe")
-        # print(table)
+        test_efficiency()
     else:
         filename = get_file()
         file_data = read_file(filename)
@@ -219,7 +305,6 @@ def main():
             print(f"We found {search_word} in {filename}.")
         else:
             print(f"{search_word} was not found in {filename}.")
-
 
 if __name__ == "__main__":
     main()

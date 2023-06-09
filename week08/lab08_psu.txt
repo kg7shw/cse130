@@ -1,0 +1,47 @@
+FOR i_pivot = array.length-1 ... 0
+    i_largest = 0
+
+    FOR i_check = 1 ... i_pivot - 1
+        IF array[i_check] > array[i_largest]
+            i_largest = i_check
+    
+    IF array[i_largest] > array[i_pivot]
+        swap array[i_largest] and array[i_pivot]
+
+
+
+
+Less Specific
+
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+list_size = length(data_list)
+
+FOR i_pivot = list_size - 1 down to 0
+    FOR i_check = 0 up to i_pivot
+        IF parse int(data_list[i_check]) > parse int(data_list[i_pivot])
+            swap data_list[i_check] and  data_list[i_pivot]
+
+PUT "Sorted list:", data_list
+
+
+More Specific
+
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+list_size = length(data_list)
+
+FOR i_pivot = list_size - 1 down to 0
+    FOR i_check = 0 up to i_pivot
+        IF parse int(data_list[i_check]) > parse int(data_list[i_pivot])
+            swap_value = data_list[i_check]
+            data_list[i_check] = data_list[i_pivot]
+            data_list[i_pivot] = swap_value
+
+PUT "Sorted list:", data_list

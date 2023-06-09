@@ -1,7 +1,27 @@
+# 1. Name:
+#      Grant Call
+# 2. Assignment Name:
+#      Lab 06: Advanced Search
+# 3. Assignment Description:
+#      This program is designed to facilitate searching for a specific name
+#      within the contents of a file. It prompts the user to enter a filename
+#      and proceeds to read the file's contents, storing them in a list.
+#      The user is then prompted to enter a name. Afterwards, the program
+#      determines whether the entered name exists within the list of file
+#      contents and provides the user with the corresponding result.
+# 4. Algorithmic Efficiency
+#      It is O(log n) it is that way because of the arch type it makes.
+#      You can see from the graph my program plotted and from the table
+#      My code generated for every doubling of the input size the efficency
+#      decreases exponentially. It looks like a steaper arch that plateaus.
+# 5. What was the hardest part? Be as specific as possible.
+#      -a paragraph or two about how the assignment went for you-
+# 6. How long did it take for you to complete the assignment?
+#      -total time in hours including reading the assignment and submitting the program-
+
 import json
 import math
 import matplotlib.pyplot as plt
-from tabulate import tabulate
 
 # Global variables
 filename = ""
@@ -62,6 +82,8 @@ def get_search_word():
     """
     search_word = input("What name are we looking for? ")
     return search_word
+
+
 
 
 def binary_search(names_list, search_word):
@@ -183,6 +205,59 @@ def display_table():
     for n, c in zip(lengths, iterations):
         print(f"{n} | {c}")
 
+def display_graph():
+        plt.plot(lengths, iterations, 'ro-')
+        plt.xlabel("Input(n)")
+        plt.ylabel("Iterations(c)")
+        plt.title("Algorithm Efficiency Graph")
+        plt.show()
+
+
+def create_test_lists():
+    num_lists = int(input("How many lists do you want? "))
+
+    lists = []
+    for i in range(num_lists):
+        length = int(input(f"Enter the length of list {i+1}: "))
+        new_list = list(range(1, length + 1))
+        lists.append(new_list)
+
+    return lists
+
+
+def default_test_lists():
+    test_lengths = [4, 8, 16, 32, 64, 124, 248, 496, 992, 1984]
+
+    lists = []
+    for length in test_lengths:
+        new_list = list(range(1, length + 1))
+        lists.append(new_list)
+
+    return lists
+
+
+
+def test_efficiency():
+    counter = 0
+    choice = input("Do you want to create your own lists?(y/n): ").lower()
+    if choice == "y":
+        lists = create_test_lists()
+    else:
+        lists = default_test_lists()
+    lengths.clear()
+    iterations.clear()
+
+    for test_list in lists:
+        counter = 0
+        search_word = test_list[-1]
+        
+        binary_search(test_list, search_word)
+        get_efficiency(test_list)
+
+    display_table()
+    display_graph()
+
+
 def main():
     """
     Runs the program.
@@ -194,18 +269,10 @@ def main():
     test = input("Do you want to run the tests? (y/n): ")
     if test.lower() == 'y':
         test_cases()
-        display_table()
+        test_efficiency()
+        # display_table()
+        # display_graph()
 
-        plt.plot(lengths, iterations, 'bo-')
-        plt.xlabel("Length of List")
-        plt.ylabel("Iterations")
-        plt.title("Algorithm Efficiency")
-        plt.show()
-
-        # table_data = zip(lengths, iterations)
-        # table_headers = ["n", "c"]
-        # table = tabulate(table_data, headers=table_headers, tablefmt="pipe")
-        # print(table)
     else:
         filename = get_file()
         file_data = read_file(filename)

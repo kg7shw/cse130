@@ -1,0 +1,70 @@
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+list_size = length(data_list)
+
+FOR i_pivot = list_size - 1 down to 0
+    FOR i_check = 0 up to i_pivot
+        IF parse int(data_list[i_check]) > parse int(data_list[i_pivot])
+            swap data_list[i_check] and  data_list[i_pivot]
+
+PUT "Sorted list:", data_list
+
+
+
+
+
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+list_size = length(data_list)
+
+FOR i_pivot = list_size - 1 down to 0
+    FOR i_check = 0 up to i_pivot
+        IF parse int(data_list[i_check]) > parse int(data_list[i_pivot])
+            swap data_list[i_check] and  data_list[i_pivot]
+
+        
+
+PUT "Sorted list:", data_list
+
+
+
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+list_size = length(data_list)
+    
+FOR i_pivot from list_size - 1 down to 0
+    i_largest = i_pivot
+    
+    FOR i_check from 0 up to i_pivot
+        IF arr[i_check] > arr[i_largest]:
+            i_largest = i_check
+    
+    IF arr[i_largest] > arr[i_pivot]:
+        arr[i_largest], arr[i_pivot] = arr[i_pivot], arr[i_largest]
+    
+PUT "Sorted list:", data_list
+
+
+procedure selectionSort(arr):
+    n = length of arr
+
+    for i_pivot from n-1 to 1 (inclusive) do:
+        i_largest = i_pivot
+        
+        for i_check from i_pivot-1 to 0 (inclusive) do:
+            if arr[i_check] > arr[i_largest] then:
+                i_largest = i_check
+        
+        if arr[i_largest] > arr[i_pivot] then:
+            swap arr[i_largest] with arr[i_pivot]
+    
+    return arr

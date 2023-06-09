@@ -1,0 +1,60 @@
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+size = LENGTH(data_list)
+
+for i_sorted in range(size - 1, 0, -1):
+    i_max = i_sorted
+
+    FOR i_check FROM i_sorted - 1 DOWNTO 0 DO
+        IF CONVERT_TO_INTEGER(data_list[i_check]) > CONVERT_TO_INTEGER(data_list[i_max]) THEN
+            i_max = i_check
+
+    IF i_max != i_sorted THEN
+        swap_value = data_list[i_max]
+        data_list[i_max] = data_list[i_sorted]
+        data_list[i_sorted] = swap_value
+
+PUT data_list # sorted data_list
+
+
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+
+size = LENGTH(data_list)
+
+FOR current_index in range(size - 1, 0, -1):
+    max_index = current_index
+
+   FOR compare_index in range(current_index - 1, -1, -1):
+    IF parse int(data_list[compare_index]) > parse int(data_list[max_index]):
+        max_index = compare_index
+
+
+    ELSE IF max_index != current_index
+        swap_value = data_list[max_index]
+        data_list[max_index] = data_list[current_index]
+        data_list[current_index] = swap_value
+
+PUT data_list # sorted data_list
+
+
+
+get filename
+read file
+get list
+set size
+for curent index in the range(size -1, 0, 1)
+
+
+
+
+swap list[minimum_index] and list[current_index]
+
+temp <- list[minimum_index]
+list[minimum_index] <- list[current_index]
+list[current_index] <- temp

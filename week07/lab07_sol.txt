@@ -1,0 +1,33 @@
+GET filename
+READ file
+data_json = json.loads(file)
+data_list = data_json["array"]
+num_list = parse int(data_list)
+
+list_size = length(num_list)
+    
+FOR i_pivot from list_size - 1 down to 0
+    i_largest = i_pivot
+    
+    FOR i_check from 0 up to i_pivot
+        IF num_list[i_check] >= num_list[i_largest]
+            i_largest = i_check
+    
+    IF num_list[i_largest] >= num_list[i_pivot]
+        swap num_list[i_largest] with num_list[i_pivot]
+    
+PUT "Sorted list: ", num_list
+
+SWITCH taxBracket
+    CASE: 10%
+        tax = income * 10%
+    CASE: 15%
+        tax = 1510 + (income - 15100)  * 15%
+    CASE: 25%
+        tax = 1510 + (income - 15100)  * 25%
+    CASE: 28%
+        tax = 1510 + (income - 15100)  * 28%
+    CASE: 33%
+        tax = 1510 + (income - 15100)  * 33%
+    CASE: 35%
+        tax = 1510 + (income - 15100)  * 25%
