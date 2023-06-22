@@ -1,0 +1,22 @@
+GET file
+Read file
+
+Array = 
+
+
+for i = values.length() ... 0
+
+
+for i = 0 .... 100
+    prompt for a number
+    get value[i]
+
+numEvenOdd[2] = 0, 0
+
+    value[i]%2
+        count += 
+
+
+
+Put numEvenOdd[0] evens
+Put numEvenOdd[1] odds

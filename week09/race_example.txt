@@ -1,0 +1,14 @@
+Use an Array
+
+
+Create an array wi
+
+
+
+points = []
+
+prompt for place
+
+
+if 1 <= place
+

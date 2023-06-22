@@ -1,0 +1,47 @@
+GET user_num = françois number # O(1)
+assert user_num == int
+GET f1 # O(1)
+GET f2 # O(1)
+assert f1 == int
+assert f1 == int
+
+seq_array = [f1, f2] # O(1)
+assert seq_list == array
+
+seq_index = user_num - 1 # O(1)
+assert seq_index is not Null
+
+check_num_1 = f1 # O(1)
+check_num_2 = f2 # O(1)
+
+FOR i = 0 ... seq_index - 1
+    assert 0 <= i < length(seq_list)  # Index out of range.
+
+    new_num = check_num_1 + check_num_2
+    seq_list.append(new_num)
+    check_num_1, check_num_2 = check_num_2, new_num
+
+assert seq_array[seq_index] = expected value7
+
+PUT seq_array[seq_index]
+
+
+GET user_num = françois number  # O(1)
+assert user_num == int
+
+GET f1  # O(1)
+assert f1 == int
+GET f2  # O(1)
+assert f1 == int
+
+seq_index = user_num - 1  # O(1)
+assert seq_index is not Null
+
+check_num_1 = f1  # O(1)
+check_num_2 = f2  # O(1)
+
+FOR i = 0 ... seq_index - 1 # O(n)
+    new_num = check_num_1 + check_num_2 # O(1) x O(n) = O(n)
+    check_num_1, check_num_2 = check_num_2, new_num # O(1) x O(n) = O(n)
+
+PUT check_num_2 O(1)

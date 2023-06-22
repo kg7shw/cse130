@@ -1,0 +1,9 @@
+Get guess
+num = random.num 1... 100
+
+
+done = false
+
+while not done
+    if guess = num
+    done = True
