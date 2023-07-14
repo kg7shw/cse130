@@ -1,0 +1,93 @@
+GET n
+is_prime_array = []
+FOR index from 0 to (n + 1)
+    is_prime_array.append(True)
+
+is_prime_array[0] = False
+is_prime_array[1] = False
+
+FOR current_index from 2 to squareroot(n)
+    IF is_prime_array[current_index] == True
+        FOR num_multiple from current_index * 2 to (n + 1) with a step size of current_index
+            is_prime_array[num_multiple] = False
+
+prime_nums = []
+FOR num_index from 2 to (n + 1)
+    IF is_prime_array[num_index] == True
+        prime_nums.append(num_index)
+
+PUT prime_nums
+
+
+
+
+# The variable n is the input number that represents the range
+# of the sought after prime numbers example if n equaled 10
+# the range would start at 0 and end at 10.
+GET n
+ASSERT n >= 2 # n must be greater than or equal to 2
+
+is_prime_array = []
+FOR index from 0 to (n + 1)
+    ASSERT  # Index out of range
+    is_prime_array.append(True)
+
+is_prime_array[0] = False
+is_prime_array[1] = False
+
+FOR current_index from 2 to squareroot(n)
+    ASSERT 2 <= current_index < length(is_prime_array) # Index out of range
+    IF is_prime_array[current_index] == True
+        FOR num_multiple from current_index * 2 to (n + 1) with a step size of current_index
+            ASSERT 0 <= num_multiple < length(is_prime_array) # Index out of range
+            is_prime_array[num_multiple] = False
+
+prime_nums = []
+FOR num_index from 2 to (n + 1)
+    IF is_prime_array[num_index] == True
+        prime_nums.append(num_index)
+
+ASSERT length(prime_nums) >= 2 # The amount of prime numbers should be greater than or equal to 2
+ASSERT prime_nums[0] == 2 # The first prime number should be 2
+ASSERT prime_nums[length(prime_nums) - 1] <= n # The last prime number should be less than or equal to n
+FOR index from 0 to (length(prime_nums) - 1)
+    ASSERT prime_nums[index] > prime_nums[index + 1] # Prime numbers are not in descending order or each value is not smaller than the one below it.
+
+
+
+PUT prime_nums
+
+
+
+
+GET n
+ASSERT n >= 2 # n must be greater than or equal to 2.
+
+is_prime_array = []
+FOR index from 0 to (n + 1)
+    ASSERT 0 <= index < length(is_prime_array) # Index out of range.
+    is_prime_array.append(True)
+
+is_prime_array[0] = False
+is_prime_array[1] = False
+
+FOR current_index from 2 to sqrt(n)
+    ASSERT 2 <= current_index <= sqrt(n) # Index out of range.
+    IF is_prime_array[current_index] == True
+        FOR num_multiple from current_index * 2 to (n + 1) with a step size of current_index.
+            ASSERT 2 * current_index <= num_multiple <= n # Index out of range.
+            is_prime_array[num_multiple] = False
+
+prime_nums = []
+FOR num_index from 2 to (n + 1)
+    IF is_prime_array[num_index] == True
+        prime_nums.append(num_index)
+
+ASSERT length(prime_nums) >= 2 # The amount of prime numbers should be greater than or equal to 2.
+ASSERT prime_nums[0] == 2 # The first prime number should be 2.
+ASSERT prime_nums[length(prime_nums) - 1] <= n # The last prime number should be less than or equal to n.
+
+FOR index from 0 to (length(prime_nums) - 2)
+    ASSERT prime_nums[index] > prime_nums[index + 1] # Prime numbers are not increasing.
+
+PUT prime_nums

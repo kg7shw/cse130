@@ -1,0 +1,108 @@
+"""
+This code takes a user input integer and creates an array.
+The program takes the user number n_range and greates an
+array of True values with the number of values equalling
+n_range the user input number. It sets 0 and 1 to False
+because they are not prime numbers.
+The program then uses 2 for loops to turn all of the
+non-prime numbers to False. It then creates an array to
+store the prime values and appends the prime values to the
+array if the value in the is_prime_array is True.
+The prime list of values is displayed to the user.
+
+""""
+
+n_range = 0  # O(1)
+WHILE n_range < 2  # O(1)
+    GET n_range  # O(1)
+
+is_prime_array = []
+# The loop below is 0 to n_range inclusive
+FOR p_index in is_prime_array from (0 to (n_range)) 
+    is_prime_array.append(True)
+    
+is_prime_array[0] = False  # O(1)
+is_prime_array[1] = False  # O(1)
+
+square_n = sqrt(n_range)  # log(n) or sqrt(n)
+
+FOR current_index from 2 to square_n  # O(log(n))
+    ASSERT 2 <= current_index <= square_n  # O(1)
+    IF is_prime_array[current_index] == True  # O(1)
+        # The loop below is (current_index * 2) to n_range inclusive
+        FOR i_multiple from ((current_index * 2) to n_range, step = current_index)  # O(n log(n))
+            ASSERT current_index * 2 <= i_multiple <= n_range  # O(1)
+            is_prime_array[i_multiple] = False  # O(1)
+
+prime_nums = []  # O(1)
+# The loop below is 0 to n_range inclusive
+FOR num_index from (0 to (n_range))  # O(n)
+    IF is_prime_array[num_index] == True  # O(1)
+        prime_nums.append(num_index)  # O(1)
+
+ASSERT length(prime_nums) > 0  # O(1)
+ASSERT prime_nums[0] == 2  # O(1)
+ASSERT prime_nums[length(prime_nums) - 1] <= n_range  # O(1)
+
+# The loop below is 0 to length(prime_nums) exclusive
+FOR index from 1 to length(prime_nums)  # O(n)
+    ASSERT prime_nums[index - 1] < prime_nums[index]  # O(1)
+
+PUT prime_nums  # O(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n_range = 0  # O(1)
+WHILE n_range < 2  # O(1)
+    GET n_range  # O(1)
+
+is_prime_array = (n_range + 1) * True  # O(n)
+is_prime_array[0] = False  # O(1)
+is_prime_array[1] = False  # O(1)
+
+square_n = sqrt(n_range)  # log(n) or sqrt(n)
+
+FOR current_index from 2 to square_n  # O(log(n))
+    ASSERT 2 <= current_index <= square_n  # O(1)
+    IF is_prime_array[current_index] == True  # O(1)
+        FOR i_multiple from ((current_index * 2) to n_range, step = current_index)  # O(n log(n))
+            ASSERT current_index * 2 <= i_multiple <= n_range  # O(1)
+            is_prime_array[i_multiple] = False  # O(1)
+
+prime_nums = []  # O(1)
+FOR num_index from (0 to (n_range))  # O(n)
+    IF is_prime_array[num_index] == True  # O(1)
+        prime_nums.append(num_index)  # O(1)
+
+ASSERT length(prime_nums) > 0  # O(1)
+ASSERT prime_nums[0] == 2  # O(1)
+ASSERT prime_nums[length(prime_nums) - 1] <= n_range  # O(1)
+
+FOR index from 1 to length(prime_nums)  # O(n)
+    ASSERT prime_nums[index - 1] < prime_nums[index]  # O(1)
+
+PUT prime_nums  # O(1)

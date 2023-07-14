@@ -1,0 +1,103 @@
+try_1
+
+GET n
+is_prime_array = []
+FOR index in is_prime_array from(0 to (n + 1))
+    is_prime_array.append(True) // is_prime_array = [True, True, True,...]
+
+is_prime_array[0] = False // Set 0 to false because it is not prime and this will cause issues
+is_prime_array[1] = False // Set 1 to false because it is not prime and this will cause issues
+FOR curruent_index in is_prime_array from (2 to squareroot(n))
+    IF is_prime_array[curruent_index] == True
+        for num_multiple is_prime_array from (curruent_index + curruent_index to (n + 1) step by curruent_index) // This represents that where it starts it iterates through starting from where it is currently at skipping the original number example 3 it would start at 3 then skip it and go to 6 and iterate from there then going to the end of the array stepping by the value of the current value. for example if the number was 2 it would start at 2 then go to 4 then to 6 then to 8 then to 10 etc unti the end of the array. it was stepping by 2 each time. same if tit was 3 it woulod go 3, 6, 9, etc...
+            is_prime_array[num_multiple] == false // sets the multiples of a prime number to false example the multiples of 3 are not prime 6, 9, 12, etc
+
+prime_nums = []
+FOR num_index in prime_nums from (2 to (n + 1))
+    IF is_prime_array[num] == True
+        prime_nums.append(num_index)
+
+PUT prime_nums
+
+
+try_2
+GET n
+is_prime_array = []
+FOR index in is_prime_array from(0 to (n + 1))
+    is_prime_array.append(True)
+
+is_prime_array[0] = False
+is_prime_array[1] = False
+FOR curruent_index in is_prime_array from (2 to squareroot(n))
+    IF is_prime_array[current_index] == True:
+        FOR num_multiple in range(current_index + current_index, n + 1, current_index)
+            is_prime_array[num_multiple] = False
+
+prime_nums = []
+FOR num_index in prime_nums from (2 to (n + 1))
+    IF is_prime_array[num_index] == True:
+        prime_nums.append(num_index)
+
+PUT prime_nums
+
+
+
+
+
+try_3
+GET n
+is_prime_array = []
+FOR index from 0 to (n + 1)
+    is_prime_array.append(True)
+
+is_prime_array[0] = False
+is_prime_array[1] = False
+
+FOR current_index from 2 to squareroot(n)
+    IF is_prime_array[current_index] == True
+        FOR num_multiple from current_index * 2 to (n + 1) with a step size of current_index
+            is_prime_array[num_multiple] = False
+
+prime_nums = []
+FOR num_index from 2 to (n + 1)
+    IF is_prime_array[num_index] == True
+        prime_nums.append(num_index)
+
+PUT prime_nums
+
+
+
+
+
+GET n
+ASSERT n >= 2 # n must be greater than or equal to 2
+
+is_prime_array = []
+FOR index from 0 to (n + 1)
+    ASSERT  # Index out of range: current_index
+    is_prime_array.append(True)
+
+is_prime_array[0] = False
+is_prime_array[1] = False
+
+FOR current_index from 2 to squareroot(n)
+    ASSERT 2 <= current_index < length(is_prime_array), "Index out of range: current_index"
+    IF is_prime_array[current_index] == True
+        FOR num_multiple from current_index * 2 to (n + 1) with a step size of current_index
+            ASSERT 0 <= num_multiple < length(is_prime_array), "Index out of range: num_multiple"
+            is_prime_array[num_multiple] = False
+
+prime_nums = []
+FOR num_index from 2 to (n + 1)
+    IF is_prime_array[num_index] == True
+        prime_nums.append(num_index)
+
+# Assertions
+ASSERT length(prime_nums) >= 2, "Number of prime numbers should be greater than or equal to 2"
+ASSERT prime_nums[0] == 2, "First prime number should be 2"
+ASSERT prime_nums[length(prime_nums) - 1] <= n, "Last prime number should be less than or equal to n"
+FOR i from 2 to length(prime_nums)
+    ASSERT 0 <= i < length(prime_nums), "Index out of range: i"
+    ASSERT 0 <= prime_nums[i] < length(prime_nums), "Index out of range: prime_nums[i]"
+
+PUT prime_nums
